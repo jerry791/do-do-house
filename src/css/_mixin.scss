@@ -1,0 +1,9 @@
+@mixin remove_a {
+    text-decoration: none;
+    color: black;
+}
+
+@mixin remove_input {
+    outline: none;
+    border: none;
+}
