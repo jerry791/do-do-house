@@ -5,5 +5,26 @@
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Noto Sans TC', sans-serif;
-  }
+    font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+    ;
+}
+
+h1{
+  // font-family: Inter;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%; /* 104px */
+  letter-spacing: 5.4px;
+  text-transform: capitalize;
+}
+p{
+  text-align: center;
+  // font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 160%; /* 38.4px */
+  letter-spacing: 4.8px;
+  opacity: 0.8;
+}

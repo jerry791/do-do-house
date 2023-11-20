@@ -1,6 +1,11 @@
 @import "main";
 .App{
-    font-size: 90px;
-    text-align: center;
-    color: $primary-orange;
+    background-color:$primary-orange;
+}
+
+.bgImg{
+    background-image: url('../../public/img/bgimg.jpg');
+    height: 100vh;
+    background-size:100vw 100vh;
+    // object-fit:scale-down;
 }

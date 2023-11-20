@@ -1,1 +1,9 @@
+$theme-colors: (
+    'primary':#E58411,
+    'transparent':rgba(0,0,0,0),
+    'light':white,
+    'opacity':rgba(255, 255, 255, 0.15)
+
+);
+@import '~bootstrap/scss/bootstrap';
 $primary-orange:#E58411;

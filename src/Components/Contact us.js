@@ -2,7 +2,7 @@ import '../css/homepage.css';
 
 function App() {
   return (
-    <p className='App'>Login</p>
+    <p className='App'>Contact us</p>
   );
 }
 
