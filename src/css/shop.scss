@@ -1,0 +1,26 @@
+@import "main";
+.App{
+    background-color:$primary-orange;
+}
+
+// .bgImg{
+//     background-image: url('../../public/img/bgimg.jpg');
+//     height: 100vh;
+//     background-size:100vw 100vh;
+//     // object-fit:scale-down;
+// }
+.card-warpper{
+    padding:0 120px;
+    display: flex;
+    justify-content: space-around;
+    .card{
+        margin: 16px;
+        width: calc(100%/4);
+        img{
+            height: 30vh;
+        }
+    }
+}
+// .carousel-control-next{
+//     background-color: black;
+// }

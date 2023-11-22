@@ -11890,8 +11890,15 @@ h3, .h3 {
   background-color: #E58411;
 }
 
-.bgImg {
-  background-image: url("../../public/img/bgimg.jpg");
-  height: 100vh;
-  background-size: 100vw 100vh;
-}/*# sourceMappingURL=homepage.css.map */
+.card-warpper {
+  padding: 0 120px;
+  display: flex;
+  justify-content: space-around;
+}
+.card-warpper .card {
+  margin: 16px;
+  width: 25%;
+}
+.card-warpper .card img {
+  height: 30vh;
+}/*# sourceMappingURL=shop.css.map */
