@@ -1,20 +1,42 @@
 import '../css/shop.css';
 import { useState } from 'react';
 import { Button, Card, Carousel, ToggleButton, Container, Row, Col, Nav, Navbar, ButtonGroup } from 'react-bootstrap';
-
 function App() {
   const [radioValue, setRadioValue] = useState('1');
   const [index, setIndex] = useState(0);
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
+function preprocess(product_list){
+  const products = [];
+  const groupSize = 4;
 
+  for (let i = 0; i < products_raw.length; i += groupSize) {
+    const group = products_raw.slice(i, i + groupSize);
+    products.push(group);
+  }
+  return products
+}
   const radios = [
     { name: 'Chair', value: '1' },
     { name: 'Bed', value: '2' },
     { name: 'Sofa', value: '3' },
     { name: 'Lamp', value: '4' },
   ];
+
+  const products_raw = [
+    { id: 1, name: 'Sakarias Armchair', price: 392, type: 'Chair' },
+    { id: 2, name: 'Baltsar Chair', price: 392, type: 'Chair' },
+    { id: 3, name: 'Anjay Chair', price: 392, type: 'Chair' },
+    { id: 4, name: 'Nyantuy Chair', price: 391, type: 'Chair' },
+    { id: 5, name: 'Sakarias Armchair', price: 392, type: 'Chair' },
+    { id: 6, name: 'Baltsar Chair', price: 392, type: 'Chair' },
+    { id: 5, name: 'Sakarias Armchair', price: 392, type: 'Chair' },
+    { id: 6, name: 'Baltsar Chair', price: 392, type: 'Chair' },
+    { id: 5, name: 'Sakarias Armchair', price: 392, type: 'Chair' },
+    { id: 6, name: 'Baltsar Chair', price: 392, type: 'Chair' }
+  ];
+  const products=preprocess(products_raw)
   return (
     <Container fluid>
       {/* navbar */}
@@ -71,208 +93,54 @@ function App() {
           </Col>
         </Row>
         {/* carousell */}
-        <Row className='mt-4 mb-4'>
-          <Carousel activeIndex={index} onSelect={handleSelect} variant="dark" indicators={false}>
-            <Carousel.Item>
-              <div className='card-warpper'>
-                <Card>
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=1" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=2" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=3" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=4" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-              </div>
-              {/* <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-              </Carousel.Caption> */}
-            </Carousel.Item>
-            <Carousel.Item>
-              <div className='card-warpper'>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=1" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=2" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=3" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=4" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-              </div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <div className='card-warpper'>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=1" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=2" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=3" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=4" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-              </div>
-            </Carousel.Item>
-            <Carousel.Item>
-              <div className='card-warpper'>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=1" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=2" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=3" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-                <Card >
-                  <Card.Img variant="top" src="https://picsum.photos/286/180?random=4" />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
-                  </Card.Body>
-                </Card>
-              </div>
-            </Carousel.Item>
+      </Container>
+      {/* 商品列表 */}
+      <Container fluid className='position-absolute bottom-0'>
+        <Row className='mt-4 mb-5'>
+          <Carousel
+            className='mb-0'
+            activeIndex={index}
+            onSelect={handleSelect}
+            variant="dark"
+            indicators={false}
+            interval={null}
+            wrap={false}
+            nextIcon={<img src='img/arrow-right.svg' alt='arrow-right' width={'100px'} />}
+            prevIcon={<img src='img/arrow-left.svg' alt='arrow-left' width={'100px'} />}
+          >
+            {
+              products.map((products) => (
+                <Carousel.Item>
+                  <div className='card-warpper'>
+                    {products.map((product) => (
+                      <Card>
+                        <Card.Img variant="top" src={`img/chair${product.id}.png`} />
+                        <Card.Body>
+                          <Card.Title>{product.type}</Card.Title>
+                          <Card.Text>
+                            {product.name}
+                          </Card.Text>
+                          <Row className='mt-5 align-items-center'>
+                            <Col>
+                              <Card.Text>
+                                {`$${product.price}`}
+                              </Card.Text>
+                            </Col>
+                            <Col md={2} className='ps-0 pe-0'>
+                              <Button variant="blue" className='px-2 pt-2 pb-0 rounded-circle' href='#'>
+                                <img src='img/plus.svg' className='add-icon' />
+                              </Button>
+                            </Col>
+                          </Row>
+                        </Card.Body>
+                      </Card>
+                    ))}
+                  </div>
+                </Carousel.Item>
+              ))}
           </Carousel>
         </Row>
       </Container>
-
     </Container>
 
   );

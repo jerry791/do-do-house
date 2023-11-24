@@ -8,7 +8,7 @@ body {
     font-family: 'Roboto', 'Noto Sans TC', sans-serif;
     ;
 }
-
+// homepage
 h1{
   // font-family: Inter;
   font-size: 80px;
@@ -18,7 +18,7 @@ h1{
   letter-spacing: 5.4px;
   text-transform: capitalize;
 }
-
+// homepage
 h2{
   text-align: center;
   // font-family: Inter;
@@ -29,6 +29,7 @@ h2{
   letter-spacing: 4.8px;
   opacity: 0.8;
 }
+// 頁面大標
 h3{
   font-family: Inter;
   font-size: 42px;
@@ -36,16 +37,6 @@ h3{
   font-weight: 700;
   line-height: normal;
 }
-// p{
-//   // text-align: center;
-//   // font-family: Inter;
-//   font-size: 24px;
-//   font-style: normal;
-//   font-weight: 400;
-//   line-height: 160%; /* 38.4px */
-//   letter-spacing: 1.6px;
-//   opacity: 0.8;
-// }
 .cart-point{
   border-radius: 90%;
   background-color: $primary-orange;

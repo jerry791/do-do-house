@@ -2,25 +2,41 @@
 .App{
     background-color:$primary-orange;
 }
-
-// .bgImg{
-//     background-image: url('../../public/img/bgimg.jpg');
-//     height: 100vh;
-//     background-size:100vw 100vh;
-//     // object-fit:scale-down;
-// }
 .card-warpper{
     padding:0 120px;
     display: flex;
-    justify-content: space-around;
+    // justify-content: space-around;
     .card{
-        margin: 16px;
+        margin:16px;
+        padding : 16px;
+        box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.25);
         width: calc(100%/4);
         img{
             height: 30vh;
+            width: 217px;
+            align-self: center;
+            // transform: translateY(-30%);
+        }
+        .card-title{
+            color: #8D8D8D;
+
+            font-size: 16.755px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal; 
+        }
+        .card-text{
+            color: #0D1B39;
+            font-size: 21.325px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 200%;
+            text-transform: capitalize;
+        }
+        .add-icon{
+            width: 25px;
+            height: 25px;
+            transform: translateY(0);
         }
     }
 }
-// .carousel-control-next{
-//     background-color: black;
-// }

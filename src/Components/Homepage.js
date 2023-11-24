@@ -1,5 +1,5 @@
 import '../css/homepage.css';
-import { Button, Container, Row, Col, Nav, Navbar, NavDropdown, Form } from 'react-bootstrap';
+import { Button, Container, Row, Col, Nav, Navbar } from 'react-bootstrap';
 function App() {
   return (
     <Container fluid className='bgImg'>
@@ -47,7 +47,7 @@ function App() {
         </Row>
         <Row className="justify-content-md-center">
           <Col md={3}>
-            <Button variant="opacity w-100 mt-5" href='/Shop'><p className='text-light' style={{fontSize:'24px'}}>Let's Started !</p></Button>
+            <Button variant="opacity w-100 mt-3" href='/Shop'><p className='text-light' style={{fontSize:'24px'}}>Let's Started !</p></Button>
           </Col>
         </Row>
       </Container>
