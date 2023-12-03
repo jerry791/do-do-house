@@ -11987,6 +11987,7 @@ h3, .h3 {
 .card-warpper {
   padding: 0 120px;
   display: flex;
+  height: 50dvh;
 }
 .card-warpper .card {
   margin: 16px;
@@ -11995,8 +11996,8 @@ h3, .h3 {
   width: 25%;
 }
 .card-warpper .card img {
-  height: 30vh;
-  width: 217px;
+  height: 18vh;
+  width: 8vw;
   align-self: center;
 }
 .card-warpper .card .card-title {
