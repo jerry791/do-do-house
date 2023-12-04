@@ -20,11 +20,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Router>
         <Routes>
-            <Route path='/' element={<Homepage />}/>
-            <Route path='/Home' element={<Homepage />}/>
-            <Route path='/Shop' element={<Shop />}/>
-            <Route path='/Inspire' element={<Inspire />}/>
-            <Route path='/Contact us' element={<ContactUs />}/>
+            <Route path='/do-do-house/' element={<Homepage />}/>
+            <Route path='/do-do-house/Home' element={<Homepage />}/>
+            <Route path='/do-do-house/Shop' element={<Shop />}/>
+            <Route path='/do-do-house/Inspire' element={<Inspire />}/>
+            <Route path='/do-do-house/Contact us' element={<ContactUs />}/>
             {/* 找不到路徑時，跳轉此頁面 */}
             <Route path="*" element={<NotFound />}/>
         </Routes>
