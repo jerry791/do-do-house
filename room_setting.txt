@@ -1,0 +1,16 @@
+livingRoom2(AmbientLight=2)
+* lamp - https://www.hermanmiller.com/products/accessories/lighting/ode-lamps/
+* table - https://www.jun2020.com/a/boli/1963.html
+* 書架 - https://tw.bid.yahoo.com/item/100324033825
+
+kitchen1(AmbientLight=1)
+* 高腳椅 - https://world.taobao.com/item/735444398233.htm
+* 餐桌 - https://www.taoshop.com.tw/SalePage/Index/9292598
+* sink - https://www.uc-clearwell.com/products-view.php?ID=900
+
+bedRoom3(AmbientLight=8)(hemilight=8)
+* 床投櫃 - https://www.amazon.de/-/en/Bedside-Drawers-Storage-Cabinet-Bedroom/dp/B09MFNPDNP
+* 櫃子 - https://www.rcmproducts.co.uk/bespoke/
+* 床架 - https://shopee.tw/%E8%90%AC%E9%81%94%E6%9C%A8%E6%A5%AD-%E8%B1%86%E8%85%90%E5%A1%8A%E5%BA%8A%E6%A5%B5%E7%B0%A1%E5%A4%A7%E9%BB%91%E7%89%9B%E5%BA%8A%E6%84%8F%E5%BC%8F%E7%9C%9F%E7%9A%AE%E5%BA%8A%E9%BB%91%E8%89%B2%E8%BC%95%E5%A5%A2%E7%8F%BE%E4%BB%A3%E7%B0%A1%E7%B4%84%E8%BB%9F%E5%8C%85%E4%B8%BB%E8%87%A5%E9%9B%99%E4%BA%BA%E5%BA%8A%E5%BA%8A%E6%9E%B6-%E5%96%AE%E4%BA%BA%E9%9B%99%E4%BA%BA%E5%BA%8A%E6%9E%B6-%E5%AF%A6%E6%9C%A8%E5%BA%8A%E6%9E%B6-%E6%8E%80%E5%BA%8A-PGXM-i.946058981.22047165488?sp_atk=f18a1ada-6535-42bc-9ca5-a4db49a33b83&xptdk=f18a1ada-6535-42bc-9ca5-a4db49a33b83
+
+office1(AmbientLight=2)(不用了)

@@ -5,8 +5,8 @@ $theme-colors: (
     'light':white,
     'opacity':rgba(255, 255, 255, 0.25),
     'dark': black,
-    'blue' : #0D1B39
-
+    'blue' : #0D1B39,
+    'light-orange': #F9F1E7
 );
 @import '~bootstrap/scss/bootstrap';
 $primary-orange:#E58411;

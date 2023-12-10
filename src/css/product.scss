@@ -1,0 +1,19 @@
+@import "main";
+.crumb{
+    background-color: #F9F1E7;
+}
+.shadow{
+    filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.25));
+}
+.subtitle{
+    color: #9F9F9F;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.productImg{
+    width: 100%; /* 相對與container的width */
+    padding-bottom: 100%;  /* 相對與container的width */
+}
