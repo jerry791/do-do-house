@@ -1,6 +1,6 @@
 import '../css/cart.css';
 import { Button, Table, Container, Row, Col, Nav, Navbar, Breadcrumb, ListGroup } from 'react-bootstrap';
-function Product(prop) {
+function Cart(prop) {
     const Delete = () => {
         console.log('test')
     }
@@ -18,9 +18,9 @@ function Product(prop) {
                     <Nav.Item>
                         <Nav.Link href="/do-do-house/Inspire" className='me-5'>Inspire</Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
+                    {/* <Nav.Item>
                         <Nav.Link href="/do-do-house/Contact us" className='me-5'>Contact us</Nav.Link>
-                    </Nav.Item>
+                    </Nav.Item> */}
                 </Nav>
                 <Nav>
                     <Nav.Item>
@@ -51,10 +51,10 @@ function Product(prop) {
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Subtotal</th>
+                                    <th>購物車商品</th>
+                                    <th>金額</th>
+                                    <th>數量</th>
+                                    <th>小計</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -89,17 +89,17 @@ function Product(prop) {
                     <Col md={3} className='light-orange' style={{ display: 'flex', justifyContent: 'center' }}>
                         <Row>
                             <Col md={12} className='mb-5 mt-3' style={{ display: 'flex', justifyContent: 'center' }}>
-                                <h3>Cart Totals</h3>
+                                <h3>購物車金額</h3>
                             </Col>
                             <Col md={6} className='ps-5'>
-                                <p className='mt-1'>Total</p>
+                                <p className='mt-1'>總計</p>
                             </Col>
                             <Col md={6} className='pe-5' style={{ display: 'flex', justifyContent: 'end' }}>
                                 <p className='mt-1' style={{color:'#B88E2F'}}>$ 250,000</p>
                             </Col>
                             <Col md={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                                <Button className='checkOutButton mb-3 mt-5' href='/do-do-house/CheckOut' variant='light'>
-                                    <p style={{ textAlign: 'center' }}>check out</p>
+                                <Button className='checkOutButton mb-3 mt-5' href='/do-do-house/CheckOut' variant='outline-dark'>
+                                    <p style={{ textAlign: 'center' }}>結帳</p>
                                 </Button>
                             </Col>
                         </Row>
@@ -112,4 +112,4 @@ function Product(prop) {
     );
 }
 
-export default Product;
+export default Cart;

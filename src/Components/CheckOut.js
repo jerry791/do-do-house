@@ -1,9 +1,6 @@
 import '../css/check-out.css';
-import { Button, Table, Container, Row, Col, Nav, Navbar, Breadcrumb, ListGroup } from 'react-bootstrap';
-function Product(prop) {
-    const Delete = () => {
-        console.log('test')
-    }
+import { Button, Form, Container, Row, Col, Nav, Navbar, Breadcrumb, ListGroup } from 'react-bootstrap';
+function CheckOut(prop) {
     return (
         <Container fluid>
             <Navbar bg="transparent" data-bs-theme="light" className='justify-content-around'>
@@ -18,9 +15,9 @@ function Product(prop) {
                     <Nav.Item>
                         <Nav.Link href="/do-do-house/Inspire" className='me-5'>Inspire</Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
+                    {/* <Nav.Item>
                         <Nav.Link href="/do-do-house/Contact us" className='me-5'>Contact us</Nav.Link>
-                    </Nav.Item>
+                    </Nav.Item> */}
                 </Nav>
                 <Nav>
                     <Nav.Item>
@@ -49,70 +46,92 @@ function Product(prop) {
             </Container>
             <Container>
                 <Row>
-                    <Col md={9}>
-                        <Table bordered  >
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Product</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Subtotal</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Asgaard sofa</td>
-                                    <td>$ 250,000</td>
-                                    <td>1</td>
-                                    <td>$ 250,000</td>
-                                    <th style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <Button variant="light" onClick={Delete}>
-                                            <img src='img/trash-can.svg' width={"20px"} />
-                                        </Button>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Asgaard sofa</td>
-                                    <td>$ 250,000</td>
-                                    <td>1</td>
-                                    <td>$ 250,000</td>
-                                    <th style={{ display: 'flex', justifyContent: 'center' }}>
-                                        <Button variant="light" onClick={Delete}>
-                                            <img src='img/trash-can.svg' width={"20px"} />
-                                        </Button>
-                                    </th>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    </Col>
-                    <Col md={3} className='light-orange' style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Col md={6}>
                         <Row>
-                            <Col md={12} className='mb-5 mt-3' style={{ display: 'flex', justifyContent: 'center' }}>
-                                <h3>Cart Totals</h3>
+                            <Col md={12}>
+                                <h3>客戶資訊</h3>
                             </Col>
-                            <Col md={6} className='ps-5'>
-                                <p className='mt-1'>Total</p>
-                            </Col>
-                            <Col md={6} className='pe-5' style={{ display: 'flex', justifyContent: 'end' }}>
-                                <p className='mt-1' style={{color:'#B88E2F'}}>$ 250,000</p>
-                            </Col>
-                            <Col md={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                                <Button className='checkOutButton mb-3 mt-5' href='/do-do-house/CheckOut' variant='light'>
-                                    <p style={{ textAlign: 'center' }}>check out</p>
-                                </Button>
-                            </Col>
+                            <Form>
+                                <Row>
+                                    <Col md={6}>
+                                        <Form.Group className="mt-3" controlId="FirstName">
+                                            <Form.Label>名字</Form.Label>
+                                            <Form.Control type="text" placeholder="小明" />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={6}>
+                                        <Form.Group md={6} className="mt-3" controlId="LastName">
+                                            <Form.Label>姓</Form.Label>
+                                            <Form.Control type="text" placeholder="王" />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col md={12}>
+                                        <Form.Group className="mt-3" controlId="FirstName">
+                                            <Form.Label>手機號碼</Form.Label>
+                                            <Form.Control type="tel" placeholder="0912345678"/>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={12}>
+                                        <Form.Group className="mt-3" controlId="FirstName">
+                                            <Form.Label>Email</Form.Label>
+                                            <Form.Control type="email" placeholder="name@example.com"/>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col md={12}>
+                                        <Form.Group className="mt-3" controlId="FirstName">
+                                            <Form.Label>地址</Form.Label>
+                                            <Form.Control type="text" placeholder="地址"/>
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
+                            </Form>
                         </Row>
+
+                    </Col>
+
+                    <Col >
+                        <Container>
+                            <Row className='mb-3'>
+                                <Col>
+                                    <p className='list-title'>您的家具</p>
+                                </Col>
+                                <Col>
+                                    <p className='list-title text-end'>小計</p>
+                                </Col>
+                            </Row>
+                            <Row className='mb-3'>
+                                <Col>
+                                    <p>Asgaard sofa x 1</p>
+                                </Col>
+                                <Col>
+                                    <p className='text-end'>Rs. 250,000.00</p>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className='mb-3' md={12} style={{width:'100%',height:'1px', backgroundColor:'#ccc'}}>
+                                </Col>
+                                <Col >
+                                    <p>應付金額</p>
+                                </Col>
+                                <Col>
+                                    <p className='list-title text-end' style={{ color: '#B88E2F' }}>Rs. 250,000.00</p>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col md={12} style={{ display: 'flex', justifyContent: 'center' }}>
+                                    <Button size="lg" className='mb-3 mt-5 checkOutButton' href='/do-do-house/Confirm' variant="outline-dark">
+                                        <p style={{ textAlign: 'center' }}>下單</p>
+                                    </Button>
+                                </Col>
+                            </Row>
+                        </Container>
                     </Col>
                 </Row>
             </Container>
         </Container>
-
-
     );
 }
 
-export default Product;
+export default CheckOut;

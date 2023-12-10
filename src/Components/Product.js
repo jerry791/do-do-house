@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import '../css/product.css';
+import { useLocation } from "react-router-dom";
 import { Button, Container, Row, Col, Nav, Navbar, Breadcrumb } from 'react-bootstrap';
 
 
 function Product() {
+    const { search } = useLocation();
+    const params = new URLSearchParams(search);
+    const productName = params.get('productName');
+    console.log(productName)
     const [productNum, setProductNum] = useState(1);
     const minusone =()=> {
         if(productNum>1){
@@ -25,9 +30,9 @@ function Product() {
                     <Nav.Item>
                         <Nav.Link href="/do-do-house/Inspire" className='me-5'>Inspire</Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
+                    {/* <Nav.Item>
                         <Nav.Link href="/do-do-house/Contact us" className='me-5'>Contact us</Nav.Link>
-                    </Nav.Item>
+                    </Nav.Item> */}
                 </Nav>
                 <Nav>
                     <Nav.Item>
@@ -47,7 +52,7 @@ function Product() {
                         <Breadcrumb.Item href="/do-do-house/Shop">
                             Shop
                         </Breadcrumb.Item>
-                        <Breadcrumb.Item active>{ }</Breadcrumb.Item>
+                        <Breadcrumb.Item active>{productName}</Breadcrumb.Item>
                     </Breadcrumb>
                 </Container>
             </Container>
@@ -56,7 +61,7 @@ function Product() {
                     <Col md={4}>
                         <img src='img/sink.png' className='productImg' alt='cart'/>
                     </Col>
-                    <Col>
+                    <Col className='ms-5'>
                         <h3>Asgaard sofa</h3>
                         <p className='subtitle'>utensil</p>
                         <Row>
@@ -73,10 +78,10 @@ function Product() {
                                 <Button variant="light" onClick={plusone}>+</Button>
                             </Col>
                             <Col md={3} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Button variant="light shadow p-2" style={{ height: '100%' }}>Add  To Cart</Button>
+                                <Button variant="light shadow p-2" style={{ height: '100%' }}>加到購物車</Button>
                             </Col>
                             <Col md={3} style={{ display: 'flex', alignItems: 'center' }} >
-                                <Button variant="light shadow p-2" style={{ height: '100%' }}>Purchase</Button>
+                                <Button variant="light shadow p-2" style={{ height: '100%' }}>直接購買</Button>
                             </Col>
                         </Row>
                     </Col>

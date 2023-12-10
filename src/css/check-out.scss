@@ -1,1 +1,35 @@
 @import "main";
+
+h3{
+    color: #000;
+    font-family: Poppins;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.list-title{
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+p{
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.checkOutButton{
+    transition: all .1s ease-in-out;
+}
+.checkOutButton:hover{
+    p{
+        color:white;
+    }
+}

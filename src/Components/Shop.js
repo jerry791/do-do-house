@@ -1,20 +1,23 @@
 import '../css/shop.css';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { Button, Card, Carousel, ToggleButton, Container, Row, Col, Nav, Navbar, ButtonGroup } from 'react-bootstrap';
 import Product from './Product';
+import { useNavigate } from "react-router-dom";
 function App() {
   const [radioValue, setRadioValue] = useState('1');
   const [index, setIndex] = useState(0);
   const [view_types, changeView] = useState('Chair');
+  // const [count, setCount] = useState(0);
+  const [targetProduct, saveTargetProduct] = useState('');
+  const navigate = useNavigate()
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
 
-  function preprocess(product_list) {
+  const preprocess=(product_list)=> {
     const products = [];
     const groupSize = 4;
     // 篩選type
-    console.log(view_types)
     const product_list_filter = product_list.filter(product => product.type === view_types);
     //根據groupSize拆解
     for (let i = 0; i < product_list_filter.length; i += groupSize) {
@@ -47,6 +50,10 @@ function App() {
     { id: 10, name: 'Baltsar bed', price: 392, type: 'Bed' }
   ];
   let products = preprocess(products_raw)
+
+  const sendProductName = (name) => {
+    navigate( `/do-do-house/Product?productName=${name}`);
+  };
   return (
     <Container fluid>
       {/* navbar */}
@@ -62,9 +69,9 @@ function App() {
           <Nav.Item>
             <Nav.Link href="/do-do-house/Inspire" className='me-5'>Inspire</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          {/* <Nav.Item>
             <Nav.Link href="/do-do-house/Contact us" className='me-5'>Contact us</Nav.Link>
-          </Nav.Item>
+          </Nav.Item> */}
         </Nav>
         <Nav>
           <Nav.Item>
@@ -126,7 +133,7 @@ function App() {
                 <Carousel.Item>
                   <div className='card-warpper'>
                     {products.map((product,idx) => (
-                      <Card>
+                      <Card style={{zIndex:100}} onClick={()=>{sendProductName(product.name)}}>
                         <Card.Img variant="top" src={`img/${product.type}${idx}.png`} />
                         <Card.Body>
                           <Row width={'100%'}>
@@ -142,7 +149,7 @@ function App() {
                               </Card.Text>
                             </Col>
                             <Col md={2} className='ps-0 pe-0'>
-                              <Button variant="blue" className='px-2 pt-2 pb-0 rounded-circle' onClick={<Product productName={product.name} href="#" />}>
+                              <Button onClick={()=>{}} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
                                 <img src='img/plus.svg' className='add-icon' />
                               </Button>
                             </Col>

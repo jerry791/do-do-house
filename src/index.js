@@ -8,6 +8,7 @@ import Product from "./Components/Product";
 import NotFound from "./Components/Not Found Page";
 import Cart from "./Components/Cart";
 import CheckOut from "./Components/CheckOut";
+import Confirm from "./Components/Confirm";
 import { 
     BrowserRouter as Router,
     Switch,
@@ -31,6 +32,7 @@ root.render(
             <Route path='/do-do-house/Contact us' element={<ContactUs />}/>
             <Route path='/do-do-house/Cart' element={<Cart />}/>
             <Route path="/do-do-house/CheckOut" element={<CheckOut/>}/>
+            <Route path="/do-do-house/Confirm" element={<Confirm/>}/>
             {/* 找不到路徑時，跳轉此頁面 */}
             <Route path="*" element={<NotFound />}/>
         </Routes>

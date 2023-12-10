@@ -15,9 +15,9 @@ function App() {
           <Nav.Item>
             <Nav.Link href="/do-do-house/Inspire" className='me-5'>Inspire</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          {/* <Nav.Item>
             <Nav.Link href="/do-do-house/Contact us" className='me-5'>Contact us</Nav.Link>
-          </Nav.Item>
+          </Nav.Item> */}
         </Nav>
         <Nav>
           <Nav.Item>
