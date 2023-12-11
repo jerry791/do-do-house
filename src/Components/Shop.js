@@ -31,23 +31,36 @@ function App() {
     { name: 'Chair', value: '1' },
     { name: 'Table', value: '2'},
     { name: 'Bed', value: '3' },
-    { name: 'cabinet', value: '4' },
+    { name: 'Cabinet', value: '4' },
     { name: 'Lamp', value: '5' },
-    { name: 'utensil', value: '6'},
+    { name: 'Utensil', value: '6'},
 
   ];
 
   const products_raw = [
-    { id: 1, name: 'Sakarias Armchair', price: 392, type: 'Chair' },
-    { id: 2, name: 'Baltsar Chair', price: 392, type: 'Chair' },
-    { id: 3, name: 'Anjay Chair', price: 392, type: 'Chair' },
-    { id: 4, name: 'Nyantuy Chair', price: 391, type: 'Chair' },
-    { id: 5, name: 'Sakarias Armchair', price: 392, type: 'Chair' },
-    { id: 6, name: 'Baltsar Chair', price: 392, type: 'Chair' },
-    { id: 7, name: 'Sakaria bed', price: 392, type: 'Bed' },
-    { id: 8, name: 'Baltsar bed', price: 392, type: 'Bed' },
-    { id: 9, name: 'Sakarias bed', price: 392, type: 'Bed' },
-    { id: 10, name: 'Baltsar bed', price: 392, type: 'Bed' }
+    { id: 1, name: 'Sakarias Armchair', price: 392, type: 'Chair',url:1 },
+    { id: 2, name: 'Baltsar Chair', price: 392, type: 'Chair',url:2 },
+    { id: 3, name: 'Anjay Chair', price: 392, type: 'Chair',url:3 },
+    { id: 4, name: 'Nyantuy Chair', price: 391, type: 'Chair',url:4 },
+    { id: 5, name: 'Sakarias Armchair', price: 392, type: 'Chair',url:5 },
+    { id: 6, name: 'Baltsar Sofa', price: 392, type: 'Chair',url:6},
+    { id: 6, name: 'Baltsar Chair', price: 392, type: 'Chair',url:7},
+    { id: 6, name: 'Kitchen Chair', price: 392, type: 'Chair',url:8},
+    { id: 6, name: 'Baltsar Sofa', price: 392, type: 'Chair',url:9},
+    { id: 7, name: 'Sakaria bed', price: 392, type: 'Bed',url:1 },
+    { id: 8, name: 'Baltsar bed', price: 392, type: 'Bed',url:2 },
+    { id: 8, name: 'Sakarias bed', price: 392, type: 'Bed',url:3 },
+    { id: 9, name: 'wood kitchen table', price: 392, type: 'Table',url:1 },
+    { id: 9, name: 'Living table', price: 392, type: 'Table',url:2 },
+    { id: 9, name: 'kitchen table', price: 392, type: 'Table',url:3 },
+    { id: 7, name: 'Sakaria Cabinet', price: 392, type: 'Cabinet',url:1 },
+    { id: 8, name: 'Baltsar Cabinet', price: 392, type: 'Cabinet',url:2 },
+    { id: 3, name: 'Anjay Cabinet', price: 392, type: 'Cabinet',url:3 },
+    { id: 4, name: 'Nyantuy Cabinet', price: 391, type: 'Cabinet',url:4 },
+    { id: 7, name: 'Good Night Lamp', price: 392, type: 'Lamp',url:1 },
+    { id: 7, name: 'Long Lamp', price: 392, type: 'Lamp',url:2 },
+    { id: 7, name: 'Kitchen Dish Drying Rack', price: 392, type: 'Utensil',url:1 },
+    { id: 8, name: 'Kitchen Sink', price: 392, type: 'Utensil',url:2 },
   ];
   let products = preprocess(products_raw)
 
@@ -133,8 +146,8 @@ function App() {
                 <Carousel.Item>
                   <div className='card-warpper'>
                     {products.map((product,idx) => (
-                      <Card style={{zIndex:100}} onClick={()=>{sendProductName(product.name)}}>
-                        <Card.Img variant="top" src={`img/${product.type}${idx}.png`} />
+                      <Card style={{zIndex:100}} >
+                        <Card.Img onClick={()=>{sendProductName(product.name)}} style={{objectFit:'contain'}} variant="top" src={`img/${product.type}/${product.type}${product.url}.png`} />
                         <Card.Body>
                           <Row width={'100%'}>
                             <Card.Title>{product.type}</Card.Title>
@@ -149,7 +162,7 @@ function App() {
                               </Card.Text>
                             </Col>
                             <Col md={2} className='ps-0 pe-0'>
-                              <Button onClick={()=>{}} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
+                              <Button onClick={()=>{console.log('click')}} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
                                 <img src='img/plus.svg' className='add-icon' />
                               </Button>
                             </Col>

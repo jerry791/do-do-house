@@ -8,7 +8,7 @@ function Product() {
     const { search } = useLocation();
     const params = new URLSearchParams(search);
     const productName = params.get('productName');
-    console.log(productName)
+
     const [productNum, setProductNum] = useState(1);
     const minusone =()=> {
         if(productNum>1){
