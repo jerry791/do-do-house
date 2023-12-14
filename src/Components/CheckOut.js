@@ -106,17 +106,25 @@ function CheckOut(prop) {
                                     <p>Asgaard sofa x 1</p>
                                 </Col>
                                 <Col>
-                                    <p className='text-end'>Rs. 250,000.00</p>
+                                    <p className='text-end'>$ 250,000</p>
+                                </Col>
+                            </Row>
+                            <Row className='mb-3'>
+                                <Col>
+                                    <p>運費</p>
+                                </Col>
+                                <Col>
+                                    <p className='text-end'>$ 100</p>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col className='mb-3' md={12} style={{width:'100%',height:'1px', backgroundColor:'#ccc'}}>
-                                </Col>
+                                <Col className='mb-3' md={12} style={{width:'100%',height:'1px', backgroundColor:'#ccc'}}/>
+
                                 <Col >
                                     <p>應付金額</p>
                                 </Col>
                                 <Col>
-                                    <p className='list-title text-end' style={{ color: '#B88E2F' }}>Rs. 250,000.00</p>
+                                    <p className='list-title text-end' style={{ color: '#B88E2F' }}>$ 250,100</p>
                                 </Col>
                             </Row>
                             <Row>

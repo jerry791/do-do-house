@@ -12080,4 +12080,46 @@ p {
 
 .App {
   background-color: #E58411;
+}
+
+.card-warpper2 {
+  position: absolute;
+  right: 60px;
+}
+.card-warpper2 .card {
+  margin: 16px;
+  padding: 16px;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+.card-warpper2 .card .card-img-top {
+  height: 18vh;
+  width: 8vw;
+  align-self: center;
+}
+.card-warpper2 .card .card-title {
+  color: #8D8D8D;
+  font-size: 16.755px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.card-warpper2 .card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-warpper2 .card .card-text {
+  padding: 0;
+  color: #0D1B39;
+  font-size: 21.325px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 200%;
+  text-transform: capitalize;
+}
+.card-warpper2 .card .add-icon {
+  width: 25px;
+  height: 25px;
+  transform: translateY(0);
 }/*# sourceMappingURL=inspire.css.map */
