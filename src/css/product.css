@@ -12096,6 +12096,6 @@ p {
 }
 
 .productImg {
-  width: 100%; /* 相對與container的width */
-  padding-bottom: 100%; /* 相對與container的width */
+  width: 60%; /* 相對與container的width */
+  padding-bottom: 60%; /* 相對與container的width */
 }/*# sourceMappingURL=product.css.map */

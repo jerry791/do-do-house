@@ -58,15 +58,15 @@ function Product() {
             </Container>
             <Container>
                 <Row className='justify-content-center'>
-                    <Col md={4}>
-                        <img src='img/sink.png' className='productImg' alt='cart'/>
+                    <Col md={4} style={{display:'flex',justifyContent:'center'}}>
+                        <img src='https://drive.google.com/uc?export=view&id=1BbVa_RfSB2yo97yIHLB330ZAhe03IAYh' className='productImg' alt='cart'/>
                     </Col>
                     <Col className='ms-5'>
-                        <h3>Asgaard sofa</h3>
-                        <p className='subtitle'>utensil</p>
+                        <h3>風格獨特椅</h3>
+                        <p className='subtitle'>chair</p>
                         <Row>
                             <Col md={8}>
-                                <p className='mt-3 mb-5'>Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.</p>
+                                <p className='mt-3 mb-5'>獨具風格的椅子，設計獨特，展現簡約奢華。舒適座椅，完美搭配各種空間。為您的家居帶來時尚與舒適。</p>
                             </Col>
                             <Col>
                             </Col>
