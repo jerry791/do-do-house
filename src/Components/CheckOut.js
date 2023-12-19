@@ -1,6 +1,29 @@
 import '../css/check-out.css';
 import { Button, Form, Container, Row, Col, Nav, Navbar, Breadcrumb, ListGroup } from 'react-bootstrap';
 function CheckOut(prop) {
+    //需要一次發送所有購物車ID
+    var data = {
+        goid: 2,
+        name:'王小明',
+        number:'0912345678',
+        email:'jerry12345@gmail.com'
+      };
+      const headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      };
+      // product:找特定商品
+      fetch('http://192.168.165.125:5000/check', {
+        method: "POST",
+        headers: headers,
+        // mode: "no-cors", // no-cors, *cors, same-origin
+        cache: "no-cache",
+        body: JSON.stringify(data)
+      }).then((response) => {
+        return response.json();
+      }).then((jsonData) => {
+        console.log(jsonData);
+      })
     return (
         <Container fluid>
             <Navbar bg="transparent" data-bs-theme="light" className='justify-content-around'>

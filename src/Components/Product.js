@@ -16,6 +16,26 @@ function Product() {
         }
     }
     const plusone =()=> setProductNum(productNum+1);
+    var data = {
+        name: '晚安小夜燈',
+        amount: 2
+      };
+      const headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      };
+      // product:找特定商品
+      fetch('http://192.168.165.125:5000/cart', {
+        method: "POST",
+        headers: headers,
+        // mode: "no-cors", // no-cors, *cors, same-origin
+        cache: "no-cache",
+        body: JSON.stringify(data)
+      }).then((response) => {
+        return response.json();
+      }).then((jsonData) => {
+        console.log(jsonData);
+      })
     return (
         <Container fluid>
             <Navbar bg="transparent" data-bs-theme="light" className='justify-content-around'>
