@@ -7,6 +7,7 @@ import { OrbitControls } from '@react-three/drei';
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 import ChatBot from './ChatBot';
+import IP_Path from './IP';
 // React 组件
 const Lights_bedroom = () => {
   return (
@@ -33,7 +34,7 @@ const Lights_livingRoom = () => {
     </>
   );
 };
-const BedRoom = () => {
+const BedRoom = ({ triggerCartUpdate, triggerer }) => {
   const [model, setModel] = useState(null);
   const cameraRef = useRef();
   const modelPositionRef = useRef({ x: 0, y: -2, z: 0 });
@@ -42,9 +43,9 @@ const BedRoom = () => {
   const [product, setProduct] = useState(null);
   const navigate = useNavigate()
   const products_raw = [
-    { id: 18, name: '簡約居家櫃', price: 392, type: 'Cabinet',url: 'https://drive.google.com/uc?export=view&id=13rl4_o-UZCmOk8ma2XB66GuwD9u3XKhD'},
-    { id: 19, name: '舒眠床頭櫃', price: 391, type: 'Cabinet',url: 'https://drive.google.com/uc?export=view&id=1ehwxM7ID4zqhXNWuQg_JsHy7gTKCChub'},
-    { id: 12, name: '現代日式床組', price: 392, type: 'Bed',url: 'https://drive.google.com/uc?export=view&id=1BbVa_RfSB2yo97yIHLB330ZAhe03IAYh'},
+    { id: 18, name: '簡約居家櫃', price: 392, type: 'Cabinet', url: 'https://drive.google.com/uc?export=view&id=13rl4_o-UZCmOk8ma2XB66GuwD9u3XKhD' },
+    { id: 19, name: '舒眠床頭櫃', price: 391, type: 'Cabinet', url: 'https://drive.google.com/uc?export=view&id=1ehwxM7ID4zqhXNWuQg_JsHy7gTKCChub' },
+    { id: 12, name: '現代日式床組', price: 392, type: 'Bed', url: 'https://drive.google.com/uc?export=view&id=1BbVa_RfSB2yo97yIHLB330ZAhe03IAYh' },
   ]
   useEffect(() => {
     const loader = new GLTFLoader();
@@ -111,6 +112,32 @@ const BedRoom = () => {
   const sendProductName = (name) => {
     navigate(`/do-do-house/Product?productName=${name}`);
   };
+
+  const addToCart = (ProductName, Amount) => {
+    var data = {
+      name: ProductName,
+      amount: Amount
+    };//get all data
+    const headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    // product:找特定商品
+    var path = IP_Path + "cart";
+    fetch(path, {
+      method: "POST",
+      headers: headers,
+      // mode: "no-cors", // no-cors, *cors, same-origin
+      cache: "no-cache",
+      body: JSON.stringify(data)
+    }).then((response) => {
+      return response.json();
+    }).then((jsonData) => {
+      console.log(jsonData)
+      triggerCartUpdate(!triggerer)
+      console.log(triggerer)
+    })
+  }
   return (
     <Container>
       <Row>
@@ -151,7 +178,7 @@ const BedRoom = () => {
                       </Card.Text>
                     </Col>
                     <Col md={2} className='ps-0 pe-0'>
-                      <Button onClick={() => { console.log('click') }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
+                      <Button onClick={() => { addToCart(product.name, 1) }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
                         <img src='img/plus.svg' className='add-icon' />
                       </Button>
                     </Col>
@@ -159,7 +186,6 @@ const BedRoom = () => {
                 </Card.Body>
               </Card>
             )}
-
           </div>
         </Col>
       </Row>
@@ -186,7 +212,7 @@ const BedRoom = () => {
   );
 };
 
-const Kitchen = () => {
+const Kitchen = ({ triggerCartUpdate, triggerer }) => {
   const [model, setModel] = useState(null);
   const cameraRef = useRef();
   const modelPositionRef = useRef({ x: 0, y: -1.5, z: 0 });
@@ -210,9 +236,9 @@ const Kitchen = () => {
     );
   }, []); // Empty dependency array means this effect runs once when the component mounts
   const products_raw = [
-    { id: 8, name: '舒適靈動座椅', price: 392, type: 'Chair',url: 'https://drive.google.com/uc?export=view&id=12mGXyj98r9oayDjJV5cuFZlP6S8rrpY2'},
-    { id: 15, name: '中島廚房桌', price: 392, type: 'Table',url: 'https://drive.google.com/uc?export=view&id=1gTz3YnxeZnsIw9Egi2oUZmoj4olrOKaQ'},
-    { id: 23, name: '大理石洗手台', price: 392, type: 'Utensil',url: 'https://drive.google.com/uc?export=view&id=1WpUNak5UZzHNyn9wm6CkstpSi4Qkaubr'}
+    { id: 8, name: '舒適靈動座椅', price: 392, type: 'Chair', url: 'https://drive.google.com/uc?export=view&id=12mGXyj98r9oayDjJV5cuFZlP6S8rrpY2' },
+    { id: 15, name: '中島廚房桌', price: 392, type: 'Table', url: 'https://drive.google.com/uc?export=view&id=1gTz3YnxeZnsIw9Egi2oUZmoj4olrOKaQ' },
+    { id: 23, name: '大理石洗手台', price: 392, type: 'Utensil', url: 'https://drive.google.com/uc?export=view&id=1WpUNak5UZzHNyn9wm6CkstpSi4Qkaubr' }
   ]
   const handleCamera = (X, Y, Z) => {
     gsap.to(cameraRef.current.position, {
@@ -261,6 +287,31 @@ const Kitchen = () => {
   const sendProductName = (name) => {
     navigate(`/do-do-house/Product?productName=${name}`);
   };
+  const addToCart = (ProductName, Amount) => {
+    var data = {
+      name: ProductName,
+      amount: Amount
+    };//get all data
+    const headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    // product:找特定商品
+    var path = IP_Path + "cart";
+    fetch(path, {
+      method: "POST",
+      headers: headers,
+      // mode: "no-cors", // no-cors, *cors, same-origin
+      cache: "no-cache",
+      body: JSON.stringify(data)
+    }).then((response) => {
+      return response.json();
+    }).then((jsonData) => {
+      console.log(jsonData)
+      triggerCartUpdate(!triggerer)
+      console.log(triggerer)
+    })
+  }
   return (
     <Container>
       <Row>
@@ -301,7 +352,7 @@ const Kitchen = () => {
                       </Card.Text>
                     </Col>
                     <Col md={2} className='ps-0 pe-0'>
-                      <Button onClick={() => { console.log('click') }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
+                      <Button onClick={() => { addToCart(product.name, 1) }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
                         <img src='img/plus.svg' className='add-icon' />
                       </Button>
                     </Col>
@@ -333,7 +384,7 @@ const Kitchen = () => {
   );
 };
 
-const LivingRoom = () => {
+const LivingRoom = ({ triggerCartUpdate, triggerer }) => {
   const [model, setModel] = useState(null);
   const cameraRef = useRef();
   const modelPositionRef = useRef({ x: 0, y: -2.8, z: 0 });
@@ -342,9 +393,9 @@ const LivingRoom = () => {
   const [product, setProduct] = useState(null);
   const navigate = useNavigate()
   const products_raw = [
-    { id: 21, name: '藝術長燈', price: 392, type: 'Lamp',url: 'https://drive.google.com/uc?export=view&id=1BQqymnlWQH1iqmUSlgI8B0xGG4b81Vql'},
-    { id: 14, name: '黝黑玻璃桌', price: 392, type: 'Table',url: 'https://drive.google.com/uc?export=view&id=1xRwmfp7dgt4J_76RKLfsQ1Pklmk1rhOA'},
-    { id: 9, name: 'L型酷沙發', price: 392, type: 'Chair',url: 'https://drive.google.com/uc?export=view&id=1nJQE8JoLX6p_nqwTu8V4p61jbAAQuIPU'},
+    { id: 21, name: '藝術長燈', price: 392, type: 'Lamp', url: 'https://drive.google.com/uc?export=view&id=1BQqymnlWQH1iqmUSlgI8B0xGG4b81Vql' },
+    { id: 14, name: '黝黑玻璃桌', price: 392, type: 'Table', url: 'https://drive.google.com/uc?export=view&id=1xRwmfp7dgt4J_76RKLfsQ1Pklmk1rhOA' },
+    { id: 9, name: 'L型酷沙發', price: 392, type: 'Chair', url: 'https://drive.google.com/uc?export=view&id=1nJQE8JoLX6p_nqwTu8V4p61jbAAQuIPU' },
   ]
   useEffect(() => {
     const loader = new GLTFLoader();
@@ -407,6 +458,31 @@ const LivingRoom = () => {
   const sendProductName = (name) => {
     navigate(`/do-do-house/Product?productName=${name}`);
   };
+  const addToCart = (ProductName, Amount) => {
+    var data = {
+      name: ProductName,
+      amount: Amount
+    };//get all data
+    const headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    // product:找特定商品
+    var path = IP_Path + "cart";
+    fetch(path, {
+      method: "POST",
+      headers: headers,
+      // mode: "no-cors", // no-cors, *cors, same-origin
+      cache: "no-cache",
+      body: JSON.stringify(data)
+    }).then((response) => {
+      return response.json();
+    }).then((jsonData) => {
+      console.log(jsonData)
+      triggerCartUpdate(!triggerer)
+      console.log(triggerer)
+    })
+  }
   return (
     <Container>
       <Row>
@@ -447,7 +523,7 @@ const LivingRoom = () => {
                       </Card.Text>
                     </Col>
                     <Col md={2} className='ps-0 pe-0'>
-                      <Button onClick={() => { console.log('click') }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
+                      <Button onClick={() => { addToCart(product.name, 1) }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
                         <img src='img/plus.svg' className='add-icon' />
                       </Button>
                     </Col>
@@ -481,24 +557,51 @@ const LivingRoom = () => {
 const Inspire = () => {
   const [radioValue, setRadioValue] = useState('1');
   const [modelSwitcher, setModelSwitcher] = useState('BedRoom')
+  //設定cart
+  const [cartNum, setCartNum] = useState(0);
+  const [triggerer, triggerCartUpdate] = useState(true);
   const radios = [
     { name: 'BedRoom', value: '1' },
     { name: 'Kitchen', value: '2' },
     { name: 'LivingRoom', value: '3' },
   ];
+  useEffect(() => {
+    var data = {};//get all data
+    const headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    // product:找特定商品
+    var path = IP_Path + "cart";
+    fetch(path, {
+      method: "POST",
+      headers: headers,
+      // mode: "no-cors", // no-cors, *cors, same-origin
+      cache: "no-cache",
+      body: JSON.stringify(data)
+    }).then((response) => {
+      return response.json();
+    }).then((jsonData) => {
+      if (jsonData.result == 'empty') {
+        setCartNum(0)
+      } else {
+        setCartNum((Object.values(jsonData)).length)
+      }
+    })
+  }, [triggerer])
   let Room;
   switch (modelSwitcher) {
     case 'BedRoom':
-      Room = <BedRoom />;
+      Room = <BedRoom triggerCartUpdate={triggerCartUpdate} triggerer={triggerer} />;
       break;
     case 'Kitchen':
-      Room = <Kitchen />;
+      Room = <Kitchen triggerCartUpdate={triggerCartUpdate} triggerer={triggerer}/>;
       break;
     case 'LivingRoom':
-      Room = <LivingRoom />;
+      Room = <LivingRoom triggerCartUpdate={triggerCartUpdate} triggerer={triggerer}/>;
       break;
     default:
-      Room = <BedRoom />;
+      Room = <BedRoom triggerCartUpdate={triggerCartUpdate} triggerer={triggerer}/>;
   }
 
   return (
@@ -525,7 +628,7 @@ const Inspire = () => {
             <Nav.Link href="/do-do-house/Cart">
               <img src='img/cart-dark.svg' alt='cart' width={'25px'} />
               <div className='cart-point'>
-                <p>0</p>
+                <p>{cartNum}</p>
               </div>
             </Nav.Link>
           </Nav.Item>
@@ -561,7 +664,7 @@ const Inspire = () => {
         </Row>
       </Container>
       {Room}
-      <ChatBot/>
+      <ChatBot />
     </Container>
 
   );

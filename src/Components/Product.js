@@ -11,6 +11,9 @@ function Product() {
     const productName = params.get('productName');
     const [productInfo,saveProInfo] = useState([]);
     const [productNum, setProductNum] = useState(1);
+    //設定cart
+    const [cartNum, setCartNum] = useState(0);
+    const [triggerer, triggerCartUpdate] = useState(true);
     const minusone =()=> {
         if(productNum>1){
             setProductNum(productNum-1);
@@ -37,8 +40,57 @@ function Product() {
           }).then((jsonData) => {
             saveProInfo(jsonData)
           })
-    },[productNum])
+    },[])
 
+    useEffect(() => {
+        var data = {};//get all data
+        const headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        };
+        // product:找特定商品
+        var path = IP_Path + "cart";
+        fetch(path, {
+            method: "POST",
+            headers: headers,
+            // mode: "no-cors", // no-cors, *cors, same-origin
+            cache: "no-cache",
+            body: JSON.stringify(data)
+        }).then((response) => {
+            return response.json();
+        }).then((jsonData) => {
+            if (jsonData.result == 'empty') {
+                setCartNum(0)
+            } else {
+                setCartNum((Object.values(jsonData)).length);
+            }
+        })
+    }, [triggerer])
+    
+    const addToCart =(ProductName,Amount)=>{
+        var data = {
+          name:ProductName,
+          amount:Amount
+        };//get all data
+        const headers = {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        };
+        // product:找特定商品
+        var path = IP_Path + "cart"; 
+        fetch(path, {
+          method: "POST",
+          headers: headers,
+          // mode: "no-cors", // no-cors, *cors, same-origin
+          cache: "no-cache",
+          body: JSON.stringify(data)
+        }).then((response) => {
+          return response.json();
+        }).then((jsonData) => {
+          console.log(jsonData)
+          triggerCartUpdate(!triggerer)
+        })
+    }
     return (
         <Container fluid>
             <Navbar bg="transparent" data-bs-theme="light" className='justify-content-around'>
@@ -62,7 +114,7 @@ function Product() {
                         <Nav.Link href="/do-do-house/Cart">
                             <img src='img/cart-dark.svg' width={'25px'} alt='cart'/>
                             <div className='cart-point'>
-                                <p>0</p>
+                                <p>{cartNum}</p>
                             </div>
                         </Nav.Link>
                     </Nav.Item>
@@ -101,10 +153,10 @@ function Product() {
                                 <Button variant="light" onClick={plusone}>+</Button>
                             </Col>
                             <Col md={3} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <Button variant="light shadow p-2" style={{ height: '100%' }}>加到購物車</Button>
+                                <Button variant="light shadow p-2" style={{ height: '100%' }} onClick={()=>{addToCart(productInfo.name,productNum)}}>加到購物車</Button>
                             </Col>
                             <Col md={3} style={{ display: 'flex', alignItems: 'center' }} >
-                                <Button variant="light shadow p-2" style={{ height: '100%' }}>直接購買</Button>
+                                <Button href='/do-do-house/cart' variant="light shadow p-2" style={{ height: '100%',display:'flex',alignItems:'center' }} onClick={()=>{addToCart(productInfo.name,productNum);}}>直接購買</Button>
                             </Col>
                         </Row>
                     </Col>

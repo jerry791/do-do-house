@@ -10,6 +10,9 @@ function App() {
   const [view_types, changeView] = useState('Chair');
   // const [count, setCount] = useState(0);
   const [products,set_products_data]=useState([[]]);
+  //設定cart
+  const [cartNum, setCartNum]=useState(0);
+  const [triggerer, triggerCartUpdate]=useState(true);
   const navigate = useNavigate()
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
@@ -41,7 +44,7 @@ function App() {
       "Content-Type": "application/json",
     };
     // product:找特定商品
-    var path = IP_Path + "/product"; 
+    var path = IP_Path + "product"; 
     fetch(path, {
       method: "POST",
       headers: headers,
@@ -55,7 +58,56 @@ function App() {
       set_products_data(preprocess(Object.values(jsonData)))
     })
   },[view_types])
-  
+
+  useEffect(()=>{
+    var data = {};//get all data
+    const headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    // product:找特定商品
+    var path = IP_Path + "cart"; 
+    fetch(path, {
+      method: "POST",
+      headers: headers,
+      // mode: "no-cors", // no-cors, *cors, same-origin
+      cache: "no-cache",
+      body: JSON.stringify(data)
+    }).then((response) => {
+      return response.json();
+    }).then((jsonData) => {
+      if(jsonData.result=='empty'){
+        setCartNum(0)
+      }else{
+        setCartNum((Object.values(jsonData)).length)
+      }
+    })
+  },[triggerer])
+
+  const addToCart =(ProductName,Amount)=>{
+    var data = {
+      name:ProductName,
+      amount:Amount
+    };//get all data
+    const headers = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    // product:找特定商品
+    var path = IP_Path + "cart"; 
+    fetch(path, {
+      method: "POST",
+      headers: headers,
+      // mode: "no-cors", // no-cors, *cors, same-origin
+      cache: "no-cache",
+      body: JSON.stringify(data)
+    }).then((response) => {
+      return response.json();
+    }).then((jsonData) => {
+      console.log(jsonData)
+      triggerCartUpdate(!triggerer)
+    })
+  }
   const sendProductName = (name) => {
     navigate(`/do-do-house/Product?productName=${name}`);
   };
@@ -83,7 +135,7 @@ function App() {
             <Nav.Link href="/do-do-house/Cart">
               <img src='img/cart-dark.svg' alt='cart' width={'25px'} />
               <div className='cart-point'>
-                <p>0</p>
+                <p>{cartNum}</p>
               </div>
             </Nav.Link>
           </Nav.Item>
@@ -120,7 +172,7 @@ function App() {
         {/* carousell */}
       </Container>
       {/* 商品列表 */}
-      <Container fluid className='position-absolute bottom-0'>
+      <Container fluid className='position-absolute bottom-0 right-0 left-0'>
         <Row className='mb-5'>
           <Carousel
             className='mb-0'
@@ -156,7 +208,7 @@ function App() {
                               </Card.Text>
                             </Col>
                             <Col md={2} className='ps-0 pe-0'>
-                              <Button onClick={() => { console.log('click') }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
+                              <Button onClick={() => { addToCart(product.name,1)}} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
                                 <img src='img/plus.svg' className='add-icon' />
                               </Button>
                             </Col>
