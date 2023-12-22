@@ -1,6 +1,26 @@
 import '../css/cart.css';
+import IP_Path from './IP';
 import { Button, Table, Container, Row, Col, Nav, Navbar, Breadcrumb, ListGroup } from 'react-bootstrap';
 function Cart(prop) {
+    var data = {
+
+    };
+    const headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    };
+    // product:找特定商品
+    var path = IP_Path + "cart";
+    fetch(path, {
+        method: "POST",
+        headers: headers,
+        cache: "no-cache",
+        body: JSON.stringify(data)
+    }).then((response) => {
+        return response.json();
+    }).then((jsonData) => {
+        console.log(jsonData)
+    })
     const Delete = () => {
         console.log('test')
     }
@@ -95,7 +115,7 @@ function Cart(prop) {
                                 <p className='mt-1'>總計</p>
                             </Col>
                             <Col md={6} className='pe-5' style={{ display: 'flex', justifyContent: 'end' }}>
-                                <p className='mt-1' style={{color:'#B88E2F'}}>$ 250,000</p>
+                                <p className='mt-1' style={{ color: '#B88E2F' }}>$ 250,000</p>
                             </Col>
                             <Col md={12} style={{ display: 'flex', justifyContent: 'center' }}>
                                 <Button className='checkOutButton mb-3 mt-5' href='/do-do-house/CheckOut' variant='outline-dark'>

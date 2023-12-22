@@ -1,5 +1,6 @@
 import '../css/homepage.css';
 import { Button, Container, Row, Col, Nav, Navbar } from 'react-bootstrap';
+import ChatBot from './ChatBot';
 function App() {
   return (
     <Container fluid className='bgImg'>
@@ -51,6 +52,7 @@ function App() {
           </Col>
         </Row>
       </Container>
+      <ChatBot/>
     </Container>
 
   );

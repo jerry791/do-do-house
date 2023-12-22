@@ -6,6 +6,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from '@react-three/drei';
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
+import ChatBot from './ChatBot';
 // React 组件
 const Lights_bedroom = () => {
   return (
@@ -560,6 +561,7 @@ const Inspire = () => {
         </Row>
       </Container>
       {Room}
+      <ChatBot/>
     </Container>
 
   );

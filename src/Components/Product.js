@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../css/product.css';
 import { useLocation } from "react-router-dom";
+import IP_Path from './IP';
 import { Button, Container, Row, Col, Nav, Navbar, Breadcrumb } from 'react-bootstrap';
-
+import ChatBot from './ChatBot';
 
 function Product() {
     const { search } = useLocation();
     const params = new URLSearchParams(search);
     const productName = params.get('productName');
-
+    const [productInfo,saveProInfo] = useState([]);
     const [productNum, setProductNum] = useState(1);
     const minusone =()=> {
         if(productNum>1){
@@ -16,26 +17,28 @@ function Product() {
         }
     }
     const plusone =()=> setProductNum(productNum+1);
-    var data = {
-        name: '晚安小夜燈',
-        amount: 2
-      };
-      const headers = {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      };
-      // product:找特定商品
-      fetch('http://192.168.165.125:5000/cart', {
-        method: "POST",
-        headers: headers,
-        // mode: "no-cors", // no-cors, *cors, same-origin
-        cache: "no-cache",
-        body: JSON.stringify(data)
-      }).then((response) => {
-        return response.json();
-      }).then((jsonData) => {
-        console.log(jsonData);
-      })
+    useEffect(()=>{
+        var data = {
+            name: productName
+          };
+          const headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          };
+          // product:找特定商品
+          fetch(IP_Path+'product', {
+            method: "POST",
+            headers: headers,
+            // mode: "no-cors", // no-cors, *cors, same-origin
+            cache: "no-cache",
+            body: JSON.stringify(data)
+          }).then((response) => {
+            return response.json();
+          }).then((jsonData) => {
+            saveProInfo(jsonData)
+          })
+    },[productNum])
+
     return (
         <Container fluid>
             <Navbar bg="transparent" data-bs-theme="light" className='justify-content-around'>
@@ -79,14 +82,14 @@ function Product() {
             <Container>
                 <Row className='justify-content-center'>
                     <Col md={4} style={{display:'flex',justifyContent:'center'}}>
-                        <img src='https://drive.google.com/uc?export=view&id=1BbVa_RfSB2yo97yIHLB330ZAhe03IAYh' className='productImg' alt='cart'/>
+                        <img src={productInfo.url} className='productImg' alt='cart'/>
                     </Col>
                     <Col className='ms-5'>
-                        <h3>風格獨特椅</h3>
-                        <p className='subtitle'>chair</p>
+                        <h3>{productInfo.name}</h3>
+                        <p className='subtitle'>{productInfo.tpye}</p>
                         <Row>
                             <Col md={8}>
-                                <p className='mt-3 mb-5'>獨具風格的椅子，設計獨特，展現簡約奢華。舒適座椅，完美搭配各種空間。為您的家居帶來時尚與舒適。</p>
+                                <p className='mt-3 mb-5'>{productInfo.description}</p>
                             </Col>
                             <Col>
                             </Col>
@@ -107,6 +110,7 @@ function Product() {
                     </Col>
                 </Row>
             </Container>
+            <ChatBot/>
         </Container>
 
 
