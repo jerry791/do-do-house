@@ -59,14 +59,23 @@ function Product() {
         }).then((response) => {
             return response.json();
         }).then((jsonData) => {
-            if (jsonData.result == 'empty') {
+            if (jsonData.result === 'empty') {
                 setCartNum(0)
             } else {
                 setCartNum((Object.values(jsonData)).length);
             }
         })
     }, [triggerer])
-    
+    useEffect(() => {
+        // Add the 'animate' class for 2 seconds when cartNum changes
+        const cartPointElement = document.querySelector('.cart-point');
+        if (cartPointElement) {
+          cartPointElement.classList.add('animate');
+          setTimeout(() => {
+            cartPointElement.classList.remove('animate');
+          }, 2000);
+        }
+      }, [cartNum]);
     const addToCart =(ProductName,Amount)=>{
         var data = {
           name:ProductName,

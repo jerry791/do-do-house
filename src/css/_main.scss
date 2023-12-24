@@ -42,7 +42,11 @@ h3{
   background-color: $primary-orange;
   display: flex;
   justify-content: center;
-  transform: translateX(15px) translateY(-35px);
+  position:relative;
+  top:-35px;
+  right:-10px;
+  // transform: translateX(15px) translateY(-35px);
+  transform-origin: center;
     p{
       text-align: center;
       line-height: 24px;
@@ -50,6 +54,30 @@ h3{
       color: white;
     }
   
+}
+
+/* Add this to your existing CSS */
+@keyframes cartPointAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cart-point {
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.cart-point.animate {
+  animation: cartPointAnimation 2s;
 }
 p{
   line-height: normal;

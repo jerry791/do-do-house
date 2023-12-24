@@ -1,5 +1,5 @@
 import '../css/shop.css';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Card, Carousel, ToggleButton, Container, Row, Col, Nav, Navbar, ButtonGroup } from 'react-bootstrap';
 import IP_Path from './IP';
 import { useNavigate } from "react-router-dom";
@@ -84,6 +84,17 @@ function App() {
     })
   },[triggerer])
 
+  useEffect(() => {
+    // Add the 'animate' class for 2 seconds when cartNum changes
+    const cartPointElement = document.querySelector('.cart-point');
+    if (cartPointElement) {
+      cartPointElement.classList.add('animate');
+      setTimeout(() => {
+        cartPointElement.classList.remove('animate');
+      }, 2000);
+    }
+  }, [cartNum]);
+
   const addToCart =(ProductName,Amount)=>{
     var data = {
       name:ProductName,
@@ -108,9 +119,12 @@ function App() {
       triggerCartUpdate(!triggerer)
     })
   }
+
   const sendProductName = (name) => {
     navigate(`/do-do-house/Product?productName=${name}`);
   };
+
+  
   return (
     <Container fluid>
       {/* navbar */}

@@ -142,15 +142,15 @@ const BedRoom = ({ triggerCartUpdate, triggerer }) => {
     <Container>
       <Row>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(1, 0.5, 0); handlePosition(0, 0, .7); handleButtonClick(); handleCard(true); filterProducts(18) }} className='p-3' style={{ position: 'absolute', bottom: '28vh', left: '43vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(1, 0.5, 0); handlePosition(0, 0, .7); handleButtonClick(); handleCard(true); filterProducts(18) }} className='p-3' style={{ position: 'absolute', bottom: '28vh', left: '43vw', borderRadius: '90%',zIndex: 100}} />
           )}
         </Col>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(.1, .1, .2); handlePosition(-2.5, .3, 1); handleButtonClick(); handleCard(true); filterProducts(19) }} className='p-3' style={{ position: 'absolute', bottom: '25vh', left: '59vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(.1, .1, .2); handlePosition(-2.5, .3, 1); handleButtonClick(); handleCard(true); filterProducts(19) }} className='p-3' style={{ position: 'absolute', bottom: '25vh', left: '59vw', borderRadius: '90%',zIndex: 100 }} />
           )}
         </Col>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(.16, 0, 3.2); handlePosition(-1, 1, 0); handleButtonClick(); handleCard(true); filterProducts(12) }} className='p-3' style={{ position: 'absolute', bottom: '26vh', left: '54vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(.16, 0, 3.2); handlePosition(-1, 1, 0); handleButtonClick(); handleCard(true); filterProducts(12) }} className='p-3' style={{ position: 'absolute', bottom: '26vh', left: '54vw', borderRadius: '90%',zIndex: 100 }} />
           )}
         </Col>
         <Col>
@@ -316,15 +316,15 @@ const Kitchen = ({ triggerCartUpdate, triggerer }) => {
     <Container>
       <Row>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(0, 0, -1); handlePosition(1, .9, 1); handleButtonClick(); handleCard(true); filterProducts(8) }} className='p-3' style={{ position: 'absolute', bottom: '28vh', left: '43vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(0, 0, -1); handlePosition(1, .9, 1); handleButtonClick(); handleCard(true); filterProducts(8) }} className='p-3' style={{ position: 'absolute', bottom: '28vh', left: '43vw', borderRadius: '90%',zIndex: 100 }} />
           )}
         </Col>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(.5, .1, -.5); handlePosition(-2, .5, 2); handleButtonClick(); handleCard(true); filterProducts(15) }} className='p-3' style={{ position: 'absolute', bottom: '28vh', left: '50vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(.5, .1, -.5); handlePosition(-2, .5, 2); handleButtonClick(); handleCard(true); filterProducts(15) }} className='p-3' style={{ position: 'absolute', bottom: '28vh', left: '50vw', borderRadius: '90%',zIndex: 100 }} />
           )}
         </Col>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(.2, .25, .4); handlePosition(-.8, 0, 2); handleButtonClick(); handleCard(true); filterProducts(23) }} className='p-3' style={{ position: 'absolute', bottom: '35vh', left: '57vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(.2, .25, .4); handlePosition(-.8, 0, 2); handleButtonClick(); handleCard(true); filterProducts(23) }} className='p-3' style={{ position: 'absolute', bottom: '35vh', left: '57vw', borderRadius: '90%',zIndex: 100 }} />
           )}
         </Col>
         <Col>
@@ -487,15 +487,15 @@ const LivingRoom = ({ triggerCartUpdate, triggerer }) => {
     <Container>
       <Row>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(3, 0, 4); handlePosition(1.5, -.9, 3); handleButtonClick(); handleCard(true); filterProducts(21) }} className='p-3' style={{ position: 'absolute', bottom: '40vh', left: '51vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(3, 0, 4); handlePosition(1.5, -.9, 3); handleButtonClick(); handleCard(true); filterProducts(21) }} className='p-3' style={{ position: 'absolute', bottom: '40vh', left: '51vw', borderRadius: '90%',zIndex: 100 }} />
           )}
         </Col>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(2, 2, 2); handlePosition(0, 0, .8); handleButtonClick(); handleCard(true); filterProducts(14) }} className='p-3' style={{ position: 'absolute', bottom: '23vh', left: '49vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(2, 2, 2); handlePosition(0, 0, .8); handleButtonClick(); handleCard(true); filterProducts(14) }} className='p-3' style={{ position: 'absolute', bottom: '23vh', left: '49vw', borderRadius: '90%',zIndex: 100 }} />
           )}
         </Col>
         <Col>
-          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(5, 0, 0); handlePosition(0, -.5, 0); handleButtonClick(); handleCard(true); filterProducts(9) }} className='p-3' style={{ position: 'absolute', bottom: '28vh', left: '43vw', borderRadius: '90%' }} />
+          {isVisible && (<Button variant="opacity" onClick={() => { handleCamera(5, 0, 0); handlePosition(0, -.5, 0); handleButtonClick(); handleCard(true); filterProducts(9) }} className='p-3' style={{ position: 'absolute', bottom: '28vh', left: '43vw', borderRadius: '90%',zIndex: 100 }} />
           )}
         </Col>
         <Col>
@@ -589,6 +589,17 @@ const Inspire = () => {
       }
     })
   }, [triggerer])
+
+  useEffect(() => {
+    // Add the 'animate' class for 2 seconds when cartNum changes
+    const cartPointElement = document.querySelector('.cart-point');
+    if (cartPointElement) {
+      cartPointElement.classList.add('animate');
+      setTimeout(() => {
+        cartPointElement.classList.remove('animate');
+      }, 2000);
+    }
+  }, [cartNum]);
   let Room;
   switch (modelSwitcher) {
     case 'BedRoom':

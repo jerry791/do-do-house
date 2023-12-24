@@ -12065,13 +12065,39 @@ h3, .h3 {
   background-color: #E58411;
   display: flex;
   justify-content: center;
-  transform: translateX(15px) translateY(-35px);
+  position: relative;
+  top: -35px;
+  right: -10px;
+  transform-origin: center;
 }
 .cart-point p {
   text-align: center;
   line-height: 24px;
   font-size: 12px;
   color: white;
+}
+
+/* Add this to your existing CSS */
+@keyframes cartPointAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.cart-point {
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.cart-point.animate {
+  animation: cartPointAnimation 2s;
 }
 
 p {
@@ -12092,7 +12118,7 @@ h3, .h3 {
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 900;
   line-height: normal;
 }
 

@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { Button, Table, Container, Row, Col, Nav, Navbar, Breadcrumb, ListGroup } from 'react-bootstrap';
 function Cart(prop) {
     //設定cart
-    const [cartNum, setCartNum] = useState(0);
+    const [cartNum, setCartNum] = useState(1);
     const [cartItem, saveCartItem] = useState([])
     const [triggerer, triggerCartUpdate] = useState(true);
     const [total,countTotal]=useState(0);
@@ -57,7 +57,6 @@ function Cart(prop) {
         }).then((response) => {
             return response.json();
         }).then((jsonData) => {
-            console.log(jsonData)
             triggerCartUpdate(!triggerer)
         })
     }
@@ -105,12 +104,12 @@ function Cart(prop) {
                 <Row>
                     {cartNum === 0 ? (
                         <Col md={12} style={{ display: 'flex', justifyContent: 'center' }}>
-                            <h3>購物車目前是空的喔！快去Shop看家俱！</h3>
+                            <h3>購物車目前是空的喔！快去看看家俱吧！</h3>
                         </Col>
                     ) : (
                         <>
                             <Col md={9}>
-                                <Table bordered  >
+                                <Table  bordered>
                                     <thead>
                                         <tr>
                                             <th></th>
@@ -130,13 +129,14 @@ function Cart(prop) {
                                                     <td>$ {product.price}</td>
                                                     <td>{product.amount}</td>
                                                     <td>$ {product.total}</td>
-                                                    <th style={{ display: 'flex', justifyContent: 'center' }}>
-                                                        <Button variant="light" onClick={() => {
+                                                    <td style={{ display: 'flex', justifyContent: 'center' }}>
+                                                        <Button variant="light" style={{display:"flex",alignItems:'center'}}
+                                                        onClick={() => {
                                                             Delete(product.id)
                                                         }}>
-                                                            <img src='img/trash-can.svg' width={"20px"} />
+                                                            <img src='img/trash-can.svg' width={"20px"} height={"20px"}/>
                                                         </Button>
-                                                    </th>
+                                                    </td>
                                                 </tr>
                                             ))
                                         }
