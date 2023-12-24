@@ -11,11 +11,11 @@ function CheckOut(prop) {
     const formattedDate = formatDate(currentDate);
     //CheckOut要的資訊
     const [formData, setFormData] = useState({
-        FirstName: "",
-        FamilyName: "",
-        Address: "",
-        Phone: '',
-        Email: '',
+        FirstName: "小祐",
+        FamilyName: "蔡",
+        Address: "高雄市鼓山區蓮海路70號",
+        Phone: '0978578868',
+        Email: 'name@example.com',
     });
     const sendToCheckOut = () => {
         cartItem.forEach(product => {
@@ -213,7 +213,7 @@ function CheckOut(prop) {
                                 cartItem.map((product, idx) => (
                                     <Row className='mb-3'>
                                         <Col>
-                                            <p>{product.pname} {product.price}元 x {product.amount}</p>
+                                            <p>{product.name} {product.price}元 x {product.amount}</p>
                                         </Col>
                                         <Col>
                                             <p className='text-end'>$ {product.total}</p>
