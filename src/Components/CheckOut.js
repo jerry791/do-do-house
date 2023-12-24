@@ -1,7 +1,7 @@
 import '../css/check-out.css';
 import IP_Path from './IP';
 import { useState, useEffect, useRef } from 'react';
-import { Button, Form, Container, Row, Col, Nav, Navbar, Breadcrumb, ListGroup } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col, Nav, Navbar, Breadcrumb } from 'react-bootstrap';
 function CheckOut(prop) {
     const [cartNum, setCartNum] = useState(1);
     const [cartItem, saveCartItem] = useState([])
@@ -94,7 +94,7 @@ function CheckOut(prop) {
         }).then((response) => {
             return response.json();
         }).then((jsonData) => {
-            if (jsonData.result == 'empty') {
+            if (jsonData.result === 'empty') {
                 setCartNum(0)
             } else {
                 setCartNum((Object.values(jsonData)).length);

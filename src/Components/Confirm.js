@@ -1,6 +1,6 @@
 import '../css/check-out.css';
 import IP_Path from './IP';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Table, Container, Row, Col, Nav, Navbar, Form } from 'react-bootstrap';
 function Confirm(prop) {
     const [cartNum, setCartNum] = useState(1);

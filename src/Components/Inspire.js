@@ -1,7 +1,7 @@
 import '../css/inspire.css';
 import React, { useRef, useState, useEffect } from 'react';
 import { Button, Card, ToggleButton, Container, Row, Col, Nav, Navbar, ButtonGroup } from 'react-bootstrap';
-import { Canvas, useLoader } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from '@react-three/drei';
 import gsap from "gsap";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ChatBot from './ChatBot';
 import IP_Path from './IP';
 // React 组件
-const Lights_bedroom = () => {
+const LightsRoom = () => {
   return (
     <>
       <ambientLight intensity={1} />
@@ -18,7 +18,7 @@ const Lights_bedroom = () => {
   );
 };
 
-const Lights_kitchen = () => {
+const LightsKitchen = () => {
   return (
     <>
       <ambientLight intensity={1} />
@@ -27,7 +27,7 @@ const Lights_kitchen = () => {
   );
 };
 
-const Lights_livingRoom = () => {
+const LightsLivingRoom = () => {
   return (
     <>
       <ambientLight intensity={2} />
@@ -179,7 +179,7 @@ const BedRoom = ({ triggerCartUpdate, triggerer }) => {
                     </Col>
                     <Col md={2} className='ps-0 pe-0'>
                       <Button onClick={() => { addToCart(product.name, 1) }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
-                        <img src='img/plus.svg' className='add-icon' />
+                        <img src='img/plus.svg' className='add-icon' alt='addToCart'/>
                       </Button>
                     </Col>
                   </Row>
@@ -202,7 +202,7 @@ const BedRoom = ({ triggerCartUpdate, triggerer }) => {
           onMouseUp={goToIni}
           onMouseDown={() => { handleButtonClick(); handleCard(false) }}
         >
-          <Lights_bedroom />
+          <LightsRoom />
           {model && <primitive object={model} />}
           <OrbitControls enableDamping={true} enablePan={false} enableZoom={true} autoRotate={false} />
         </Canvas>
@@ -353,7 +353,7 @@ const Kitchen = ({ triggerCartUpdate, triggerer }) => {
                     </Col>
                     <Col md={2} className='ps-0 pe-0'>
                       <Button onClick={() => { addToCart(product.name, 1) }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
-                        <img src='img/plus.svg' className='add-icon' />
+                        <img src='img/plus.svg' className='add-icon' alt='addToCart'/>
                       </Button>
                     </Col>
                   </Row>
@@ -374,7 +374,7 @@ const Kitchen = ({ triggerCartUpdate, triggerer }) => {
           onMouseUp={goToIni}
           onMouseDown={() => { handleButtonClick() }}
         >
-          <Lights_kitchen />
+          <LightsKitchen />
           {model && <primitive object={model} />}
           <OrbitControls enableDamping={true} enablePan={false} enableZoom={true} autoRotate={false} />
         </Canvas>
@@ -524,7 +524,7 @@ const LivingRoom = ({ triggerCartUpdate, triggerer }) => {
                     </Col>
                     <Col md={2} className='ps-0 pe-0'>
                       <Button onClick={() => { addToCart(product.name, 1) }} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
-                        <img src='img/plus.svg' className='add-icon' />
+                        <img src='img/plus.svg' className='add-icon' alt='addToCart'/>
                       </Button>
                     </Col>
                   </Row>
@@ -545,7 +545,7 @@ const LivingRoom = ({ triggerCartUpdate, triggerer }) => {
           onMouseUp={goToIni}
           onMouseDown={() => { handleButtonClick() }}
         >
-          <Lights_livingRoom />
+          <LightsLivingRoom />
           {model && <primitive object={model} />}
           <OrbitControls enableDamping={true} enablePan={false} enableZoom={true} autoRotate={false} />
         </Canvas>
@@ -582,7 +582,7 @@ const Inspire = () => {
     }).then((response) => {
       return response.json();
     }).then((jsonData) => {
-      if (jsonData.result == 'empty') {
+      if (jsonData.result === 'empty') {
         setCartNum(0)
       } else {
         setCartNum((Object.values(jsonData)).length)

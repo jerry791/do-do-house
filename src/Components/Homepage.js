@@ -1,5 +1,5 @@
 import '../css/homepage.css';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import IP_Path from './IP';
 import { Button, Container, Row, Col, Nav, Navbar } from 'react-bootstrap';
 import ChatBot from './ChatBot';
@@ -23,7 +23,7 @@ function App() {
     }).then((response) => {
       return response.json();
     }).then((jsonData) => {
-      if (jsonData.result == 'empty') {
+      if (jsonData.result === 'empty') {
         setCartNum(0)
       } else {
         setCartNum((Object.values(jsonData)).length)

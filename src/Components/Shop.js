@@ -54,7 +54,6 @@ function App() {
     }).then((response) => {
       return response.json();
     }).then((jsonData) => {
-      var valuesArray = Object.values(jsonData);
       set_products_data(preprocess(Object.values(jsonData)))
     })
   },[view_types])
@@ -76,7 +75,7 @@ function App() {
     }).then((response) => {
       return response.json();
     }).then((jsonData) => {
-      if(jsonData.result=='empty'){
+      if(jsonData.result==='empty'){
         setCartNum(0)
       }else{
         setCartNum((Object.values(jsonData)).length)
@@ -223,7 +222,7 @@ function App() {
                             </Col>
                             <Col md={2} className='ps-0 pe-0'>
                               <Button onClick={() => { addToCart(product.name,1)}} variant="blue" className='px-2 pt-2 pb-0 rounded-circle'>
-                                <img src='img/plus.svg' className='add-icon' />
+                                <img src='img/plus.svg' className='add-icon' alt='addToCart'/>
                               </Button>
                             </Col>
                           </Row>

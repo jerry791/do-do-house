@@ -1,7 +1,7 @@
 import '../css/cart.css';
 import IP_Path from './IP';
-import { useState, useCallback, useEffect } from 'react';
-import { Button, Table, Container, Row, Col, Nav, Navbar, Breadcrumb, ListGroup } from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { Button, Table, Container, Row, Col, Nav, Navbar, Breadcrumb } from 'react-bootstrap';
 function Cart(prop) {
     //設定cart
     const [cartNum, setCartNum] = useState(1);
@@ -25,7 +25,7 @@ function Cart(prop) {
         }).then((response) => {
             return response.json();
         }).then((jsonData) => {
-            if (jsonData.result == 'empty') {
+            if (jsonData.result === 'empty') {
                 setCartNum(0)
             } else {
                 setCartNum((Object.values(jsonData)).length);
@@ -134,7 +134,7 @@ function Cart(prop) {
                                                         onClick={() => {
                                                             Delete(product.id)
                                                         }}>
-                                                            <img src='img/trash-can.svg' width={"20px"} height={"20px"}/>
+                                                            <img src='img/trash-can.svg' width={"20px"} height={"20px"} alt="刪除購物車商品"/>
                                                         </Button>
                                                     </td>
                                                 </tr>

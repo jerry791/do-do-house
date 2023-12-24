@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Homepage from './Components/Homepage';
-import ContactUs from "./Components/Contact us";
 import Shop from "./Components/Shop";
 import Inspire from "./Components/Inspire";
 import Product from "./Components/Product";
@@ -11,9 +10,7 @@ import CheckOut from "./Components/CheckOut";
 import Confirm from "./Components/Confirm";
 import { 
     BrowserRouter as Router,
-    Switch,
     Routes,
-    Link,
     Route
  } from "react-router-dom";
 
@@ -29,7 +26,6 @@ root.render(
             <Route path='/do-do-house/Shop' element={<Shop />}/>
             <Route path='/do-do-house/Product' element={<Product />} />
             <Route path='/do-do-house/Inspire' element={<Inspire />}/>
-            <Route path='/do-do-house/Contact us' element={<ContactUs />}/>
             <Route path='/do-do-house/Cart' element={<Cart />}/>
             <Route path="/do-do-house/CheckOut" element={<CheckOut/>}/>
             <Route path="/do-do-house/Confirm" element={<Confirm/>}/>
